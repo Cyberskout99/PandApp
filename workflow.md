@@ -26,7 +26,7 @@ Now make your changes.  After you're ready to publish your changes, commit your 
 
 `git commit -m "Give a description of what changed here"`
 
-`git push origin`
+`git push origin name-of-your-new-branch`
 
 ### 3. Create a Pull Request
 
