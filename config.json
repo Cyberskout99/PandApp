@@ -1,0 +1,17 @@
+{
+  "dev": {
+    "hostname": "localhost",
+    "port": "8080",
+    "debug": true,
+    "dbUser": "fake",
+    "dbPassword": "fake"
+  },
+
+  "production": {
+    "hostname": "brokenpoker.com",
+    "port": "80",
+    "debug": false,
+    "dbUser": "overwrittenByProdServerForSecurity",
+    "dbPassword": "overwrittenByProdServerForSecurity"
+  }
+}

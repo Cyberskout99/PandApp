@@ -26,7 +26,25 @@ You'll now have a folder called CodeAndLearn that contains the entirety of the p
 
 If you do not already have a preferred Python code editor, the PyCharm IDE is a fantastic option.  Download it and open the CodeAndLearn directory, it will help you write Python considerably over time.
 
+#### Library Dependencies
+
+Using Python's PIP package manager, install the project's libraries with the following commands:
+
+```pip install flask```
+
+(On some machines, ```pip``` is called ```pip3```)
+
 TODO: Put instructions for how to run a Flask/Django app locally here
+
+#### Running the Project
+
+First make sure you've installed all the Python requirements above, then navigate to the project in your command line and enter:
+
+```python server.py```
+
+(This might be ```python3 server.py``` on some machines)
+
+After you're up and running, go to [http://localhost:8080](http://localhost:8080) to see the homepage!
 
 #### SQL Tooling
 
