@@ -32,8 +32,6 @@ Using Python's PIP package manager, install the project's libraries with the fol
 
 ```pip install flask```
 
-```pip install sql```
-
 (On some machines, ```pip``` is called ```pip3```)
 
 TODO: Put instructions for how to run a Flask/Django app locally here
