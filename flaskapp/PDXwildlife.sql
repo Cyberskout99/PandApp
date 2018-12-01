@@ -177,8 +177,48 @@ CREATE TABLE Staff_tbl (
 StaffID int primary key
 StaffFirst varchar (45),
 StaffLast varchar (45),
-StaffObs boolean, /* Staff allowed to make behavior observations */
-StaffLab boolean, /* Staff allowed to record labs */
-StaffKeeper boolean, /* Staff allowed to record birth/infant/rear observations */
-StaffView boolean) /* Staff allowed ViewOnly access)
+-- AB: Adding login fields
+Username varchar(25) unique not null,
+Password text not null 
+)
 ;
+-- AB: Removed StaffObs, StaffLab, StaffKeeper, StaffView to use role tables instead.
+    -- StaffObs boolean, /* Staff allowed to make behavior observations */
+    -- StaffLab boolean, /* Staff allowed to record labs */
+    -- StaffKeeper boolean, /* Staff allowed to record birth/infant/rear observations */
+    -- StaffView boolean) /* Staff allowed ViewOnly access)
+
+/* Database Roles */
+CREATE TABLE Roles_db (
+RoleDbID int primary key,
+Role varchar(30),
+Description varchar(30)
+)
+;
+
+/* Application Roles */
+
+CREATE TABLE Roles_app (
+RoleAppID int primary key,
+Role varchar(30),
+Description varchar(30)
+)
+;
+
+/* Staff Database Role Assignments */
+CREATE TABLE RoleDB_Assignments (
+StaffRoleID int primary key,
+StaffID_fk int foreign key references Staff_tbl (StaffID),
+RoleDbId_fk int foreign key references Roles_db (RoleDbID)
+)
+;
+
+/* Staff App Role Assignments */
+CREATE TABLE RoleApp_Assignments (
+StaffRoleID int primary key,
+StaffID_fk int foreign key references Staff_tbl (StaffID),
+RoleAppID_fk int foreign key references Roles_app (RoleAppID)
+)
+;
+
+
