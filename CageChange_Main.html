@@ -1,0 +1,55 @@
+<html>
+<link rel="stylesheet" href="theme.css" />
+<script>
+$(".date-pick").datepicker('setDate', new Date());
+</script>
+
+<body class="background-color">
+<div class="container-fluid pb-5">
+    <!-- Brand color  -->
+    <div class="container-fluid example-container mt-5" data-category="brand-color">
+        <div class="mt-3 mb-5">
+            <div class="p-2 mb-2 bg-secondary text-white"><h3>Cage Change</h3></div>
+                        <div class="p-2 mb-2 bg-primary text-white">Update Cage Assignment</div>
+        </div>
+    <!-- Grid  -->
+    <div class="container-fluid example-container" data-category="grid">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="mt-3 mb-5">
+                <div class="container-fluid example-container" data-category="forms">
+                    <h4>Cage Info</h4>
+                    <div class="dropdown">
+                      <label for="PandaID"><i>Panda ID:</i></label>
+                      <input id="PandaID" type="numeric">
+                      <br>
+                      <label for=""><i>Panda Name:</i></label>
+                      <input type="text">
+                      <br>
+                      <br>
+                      <label for="HomePenID" class="col-xs-3 col-form-label mr-2">Home Pen ID</label>
+                      <input type="dropdown" value="Xing Xiong Pen">
+                      <br>
+                      <label for="NewPenID" class="col-xs-3 col-form-label mr-2">New Pen ID</label>
+                      <input type="dropdown" value="New Zoo Pen #3">
+                      <br>
+                      <label for="New Pen Date" class="col-xs-3 col-form-label mr-2">New Pen Date</label>
+                      <input type="Date" value="01/01/2009">
+                      <br>
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="mt-3 mb-5">
+                <button type="button" class="btn btn-outline-primary">Add Entry</button>
+                <br>
+                <br>
+                <button type="button" class="btn btn-outline-secondary">Exit to Menu</button>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

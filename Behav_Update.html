@@ -1,0 +1,127 @@
+<html>
+<link rel="stylesheet" href="theme.css" />
+<script>
+$(".date-pick").datepicker('setDate', new Date());
+document.getElementById("BehavTime").defaultValue = "CurrentTime()";
+</script>
+
+<body class="background-color">
+<div class="container-fluid pb-5">
+    <!-- Brand color  -->
+    <div class="container-fluid example-container mt-5" data-category="brand-color">
+        <div class="mt-3 mb-5">
+            <div class="p-2 mb-2 bg-secondary text-white"><h3>Behavior</h3></div>
+                        <div class="p-2 mb-2 bg-success text-white">Update Behavior Entry</div>
+        </div>
+
+    <!-- Grid  -->
+    <div class="container-fluid example-container" data-category="grid">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="mt-3 mb-5">
+                <div class="container-fluid example-container" data-category="forms">
+                    <div>
+                    <label for="BehavID" class="col-xs-3 col-form-label mr-2"><i>BehavID:</i> </label>
+                    <br>
+                    <label for="BehavDateTime"class="col-xs-3 col-form-label mr-2"><i>BehavDateTime:</i> </label>
+                    <div class="mt-3 mb-5">
+                        <div class="container">
+                            <form action="javascript:void(0);">
+                              <div class="form-group row">
+                              </div>
+                                <div class="form-group row">
+                                    <label for="BehavType" class="col-xs-3 col-form-label mr-2">Behavior Type</label>
+                                    <div class="col-xs-9">
+                                        <input type="dropdown" class="form-control" id="BehavType" name="BehavType">
+                                    </div>
+                                </div>
+                                    <div class="form-group row">
+                                    <label for="FocalName" class="col-xs-3 col-form-label mr-2">Focal Panda</label>
+                                    <div class="col-xs-9">
+                                        <input type="text" class="form-control" id="FocalName" name="FocalName">
+                                    </div>
+                                    </div>
+                                    <br>
+                                    <div class="form-group row">
+                                    <label for="Panda1Name" class="col-xs-3 col-form-label mr-2">Panda #1</label>
+                                    <div class="col-xs-9">
+                                        <input type="text" class="form-control" id="Panda1Name" name="Panda1Name">
+                                    </div>
+                                    </div>
+                                    <div class="form-group row">
+                                    <label for="Panda2Name" class="col-xs-3 col-form-label mr-2">Panda #2</label>
+                                    <div class="col-xs-9">
+                                        <input type="text" class="form-control" id="Panda2Name" name="Panda2Name">
+                                    </div>
+                                    </div>
+                                </div
+                                <br>
+                                <br>
+                                <div class="form-group row">
+                                    <label for="TempPhone" class="col-xs-3 col-form-label mr-2">Temp C (phone)</label>
+                                    <div class="col-xs-9">
+                                        <input type="number" class="form-control" id="BehavPhone" name="BehavPhone">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="TempTherm" class="col-xs-3 col-form-label mr-2">Temp C (therm) </label>
+                                    <div class="col-xs-9">
+                                        <input type="number" class="form-control" id="BehavTherm" name="BehavTherm">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="AirQual" class="col-xs-3 col-form-label mr-2">Air Quality</label>
+                                    <div class="col-xs-9">
+                                        <input type="dropdown" class="form-control" id="AirQual" name="AirQual">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="Weather" class="col-xs-3 col-form-label mr-2">Weather</label>
+                                    <div class="col-xs-9">
+                                        <input type="dropdown" class="form-control" id="Weather" name="Weather">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="CSVupload" class="col-xs-3 col-form-label mr-2">CSV Upload:</label>
+                                    <div class="col-xs-9">
+                                        <input type="text" class="form-control" id="CSVupload" name="CSVupload">
+                                    </div>
+                                    <button type="button">Browse...</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="mt-3 mb-5">
+              <button type="button" class="btn btn-outline-success">Update Record</button>
+              <br>
+              <br>
+              <button type="button" class="btn btn-outline-danger">Delete Record</button>
+              <br>
+              <br>
+              <button type="button" class="btn btn-outline-secondary">Exit to Menu</button>
+          </div>
+            <div class="form-group row">
+                <label for="BehavUpdateDate" class="datePicker">New Date</label>
+                <div class="col-xs-9">
+                    <input type="date" class="form-control" id="datePicker" name="datePicker">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="BehavUpdateTime" class="col-xs-3 col-form-label mr-2">New Time</label>
+                <div class="col-xs-9">
+                    <input type="time" class="form-control" label="hh:mm" id="BehavTime" name="BehavTime">
+                </div>
+            </div>
+      </div>
+          </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+
+    <!-- Forms  -->
