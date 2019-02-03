@@ -1,52 +1,42 @@
 import psycopg2
-from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
-)
-from werkzeug.exceptions import abort  ## this was in the Flaskr tutorial
+from flask import request, render_template
+from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 
-## from pandapp.auth import login_required
-## from pandapp.db import get_db
+app = Flask(__name__) # by default, takes name of root directory
 
-bp = Blueprint('pandapp', __name__)
+app.config['DEBUG']= True
+
+# dictionary of arguments to pass through for config settings
+app.config.update(
+    SECRET_KEY='Battlestar*84',
+    SQLALCHEMY_DATABASE_URI='postgresql://postgres:Battlestar*84@localhost/PandaApp_Db',
+    SQLALCHEMY_TRACK_MODIFICATIONS=False)
+
+# create instance of SQLAlchemy class
+db = SQLAlchemy(app)
+
+dummyStaff = {'StaffID': 1, 'StaffFirst': 'Jim', 'StaffLast': 'Jones', 'Username': 'UserID123', 'Password': 'TopSecret'}
+
+#  Apply decorator to 'bio_entry()' function #
 
 
-## Define the landing page ("index") for the blog #
-@bp.route('/')
-def index():
-#    db = get_db()
-#    staff = db.execute(
-#        'SELECT staff_id, first, last'
-#        ' FROM AppUsers AU JOIN DbUsers DU ON AU.app_id = DU.app_id' ## Display field for Staff ID? ##
-#		 ' WHERE ApplUsers.UserID = g.(UserID);
-#    ).fetchall()
-    return render_template('/index.html')  
-
-## Define a call to create a new "entry" for the each Biometrics record ##
-@bp.route('/bio_entry', methods=('GET', 'POST'))
-@login_required  #this lives in the auth.py blueprint #
+@app.route('/bio_entry', methods=('GET', 'POST'))
 def bio_entry():
     if request.method == 'POST':
-        PandaID = request.form['PandaID']
-        weight = request.form['Weight']
-        height = request.form['Height']
-        length = request.form['Length']
-        BioDate = request.form['BioDate']
-        BioTime = request.form['BioTime']
-        error = None
+        db.PandaID = request.form['PandaID']
+        db.Weight = request.form['Weight']
+        db.Height = request.form['Height']
+        db.Length = request.form['Length']
+        db.BioDate = request.form['BioDate']
+        db.BioTime = request.form['BioTime']
+        db.StaffID = request.form['StaffID']
 
-        if not title:
-            error = 'PandaID is required.'
+    return render_template('Bio_Entry.html')
 
-        if error is not None:
-            flash(error)
-        else:
-            db = get_db()
-            db.execute(
-                'INSERT INTO bio_tbl (PandaID, weight, height, length, BioDate, BioTime, StaffID)'
-                ' VALUES (?, ?, ?, ?, ?, ?)',
-                (PandaID, weight, height, length,BioDate, BioTime, g.user['id'])
-            )
-            db.commit()
-            return redirect(url_for('pandapp.index'))
 
-    return render_template('pandapp/bio_entry.html')
+# from pandapp import routes # doesn't seem to be working ? #
+
+if __name__ == '__main__':
+    db.create_all()
+    app.run(debug=True)
