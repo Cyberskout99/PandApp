@@ -1,5 +1,6 @@
 <html>
-<link rel="stylesheet" href="theme.css" />
+<link rel="stylesheet" href="static/theme.css" />
+<link rel="stylesheet" href="static/theme2.css" />
 <script>
 $(".date-pick").datepicker('setDate', new Date());
 document.getElementById("BioTime").defaultValue = "CurrentTime()";
@@ -17,33 +18,53 @@ document.getElementById("BioTime").defaultValue = "CurrentTime()";
     <!-- Grid  -->
     <div class="container-fluid example-container" data-category="grid">
         <div class="row">
-          <div class="col-sm-8">
+          <div class="col-sm-12">
             <div class="mt-3 mb-5">
                 <div class="container-fluid example-container" data-category="forms">
-                    <h3>Enter Measurements</h3>
-                    <div class="dropdown">
-                    <label for="PandaID" class="col-xs-3 col-form-label mr-2">PandaID</label>
-                    <input type="number">
+                    <div class="form-row">
+                    <br>
+                    <div class="col-sm-6">
+                    <div class="form-group-row">
+                    <br>
+                      Welcome {@Username} !
+                    <br>
+                    <br>
+                      <label for="PandaID" style="position:relative;">PandaID</label>
+                      <input tabindex="1" type="number" style="position:relative; text-align: center; color: red;" name="PandaID">
                     </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group-row">
+                          <label for="BioDate" style="position:relative; text-align: center;" class="datePicker" default="CurrentDate()">Date</label>
+                          <input tabindex="2" type="date" style="position:relative; text-align: center;" class="form-control" id="datePicker" value="01/01/2019">
+                      <div class="form-group">
+                          <label for="BioTime" style="position:relative; text-align: center;" class="col-xs-3 col-form-label mr-2">Time</label>
+                          <input tabindex="3" type="time" style="position:relative; text-align: center;" class="form-control" label="hh:mm" id="BioTime" name="time">
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                    <br>
+                    <h4 style="position:relative; text-align: center;">Enter Measurements</h3>
                     <div class="mt-3 mb-5">
                         <div class="container">
                             <form action="javascript:void(0);">
-                              <div class="form-group row">
+                              <div class="form-group">
                               </div>
-                                <div class="form-group row">
-                                    <label for="Weight" class="col-xs-3 col-form-label mr-2">Weight (kg)</label>
+                                <div class="form-group" >
+                                    <label for="Weight" style="position:relative; text-align: center;" class="col-xs-3 col-form-label mr-2">Weight (kg)</label>
                                     <div class="col-xs-9">
                                         <input type="number" class="form-control" id="Weight" name="Weight">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="Height" class="col-xs-3 col-form-label mr-2">Height (cm)</label>
+                                <div class="form-group">
+                                    <label for="Height" style="position:relative;text-align: center;" class="col-xs-3 col-form-label mr-2">Height (cm)</label>
                                     <div class="col-xs-9">
                                         <input type="number" class="form-control" id="Height" name="Height">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="Length" class="col-xs-3 col-form-label mr-2">Length (cm)</label>
+                                <div class="form-group">
+                                    <label for="Length" style="position:relative; text-align: center;" class="col-xs-3 col-form-label mr-2">Length (cm)</label>
                                     <div class="col-xs-9">
                                         <input type="number" class="form-control" label="cm" id="Length" name="Length">
                                     </div>
@@ -53,28 +74,18 @@ document.getElementById("BioTime").defaultValue = "CurrentTime()";
                     </div>
             </div>
           </div>
-        </div>
-          <div class="col-sm-4">
-            <div class="mt-3 mb-5">
-                <button type="button" class="btn btn-outline-primary">Add Entry</button>
-                <br>
-                <br>
+            <div class="form-group">
+            <div class="mt-3 mb-5 form-row">
+              <div style="padding: 10px; position: absolute; bottom: 8px; left: 25px;">
                 <button type="button" class="btn btn-outline-secondary">Exit to Menu</button>
-            </div>
-            <div class="form-group row">
-                <label for="BioDate" class="datePicker" default="CurrentDate()">Date</label>
-                <div class="col-xs-9">
-                    <input type="date" class="form-control" id="datePicker" name="datePicker">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="BioTime" class="col-xs-3 col-form-label mr-2">Time</label>
-                <div class="col-xs-9">
-                    <input type="time" class="form-control" label="hh:mm" id="BioTime" name="time">
-                </div>
+              </div>
+              <br>
+              <div style="padding: 10px; position: absolute; bottom: 8px; right: 25px;">
+                <button type="button" class="btn btn-outline-primary">Add Entry</button>
+              </div>
             </div>
           </div>
-        </div>
+      </div>
     </div>
 </div>
 </div>
