@@ -1,37 +1,77 @@
 import psycopg2
-from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
-)
-from werkzeug.exceptions import abort  ## this was in the Flaskr tutorial
+from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 
-## from pandapp.auth import login_required
-## from pandapp.db import get_db
+pandapp = Flask(__name__)
 
-bp = Blueprint('pandapp', __name__)
+pandapp.config['DEBUG']= True
+
+pandapp.config.update(               ## dictionary of arguments to pass through for config settings
+    SECRET_KEY='Battlestar*84',
+    SQLALCHEMY_DATABASE_URI='postgresql://postgres:Battlestar*84@localhost/PandaApp_Db',
+    SQLALCHEMY_TRACK_MODIFICATIONS=False)
+
+db = SQLAlchemy(pandapp) ## create instance of SQLAlchemy class
+
+##  Basic Panda Info (PandaID is a dependency for biometrics entry) ##
+class Panda(db.Model):
+    __tablename__ = 'Panda_tbl'
+    PandaID = db.Column('PandaID', db.Integer, primary_key=True)
+    PandaName = db.Column('Name', db.Unicode) ## not null
+    PandaSex = db.Column('Sex', db.Unicode) ## not null
+    DOB = db.Column('DOB', db.DateTime) ## not null
+    DODeath = db.Column('DODeath', db.DateTime)
+    Provenance = db.Column('Provenance', db.Unicode)
+    CaptureDate = db.Column('Capture_Date', db.Date)
+    BirthLoc = db.Column('Birth_Location', db.Unicode)
+    biometrics = db.relationship('Bio', backref='panda', lazy=True)
+
+##  Data Collection Staff Info (StaffID is a dependency for biometrics entry) ##
+class Staff(db.Model):
+    __tablename__ = 'Staff_tbl'
+    StaffID = db.Column('StaffID', db.Integer, primary_key=True)
+    StaffFirst = db.Column('StaffFirst', db.Unicode)
+    StaffLast = db.Column('StaffLast', db.Unicode)
+    Username = db.Column('Username', db.Unicode)
+    Password = db.Column('Password', db.Unicode)
+    biometrics = db.relationship('Bio', backref='staff', lazy=True)
 
 
-## Define the landing page ("index") for the blog #
-@bp.route('/')
-def index():
-#    db = get_db()
-#    staff = db.execute(
-#        'SELECT staff_id, first, last'
-#        ' FROM AppUsers AU JOIN DbUsers DU ON AU.app_id = DU.app_id' ## Display field for Staff ID? ##
-#		 ' WHERE ApplUsers.UserID = g.(UserID);
-#    ).fetchall()
-    return render_template('/index.html')  
+##  Define a "bio_entry" API (point) for the app ##
+@pandapp.route('/bio_entry', methods=('GET', 'POST'))
 
-## Define a call to create a new "entry" for the each Biometrics record ##
-@bp.route('/bio_entry', methods=('GET', 'POST'))
-@login_required  #this lives in the auth.py blueprint #
+##  Define data for Flask/SQLAlchemy 'Bio' data object (class) ##
+class Bio(db.Model):
+    __tablename__ = 'Bio_tbl'
+    BioID = db.Column('BioID', db.Integer, primary_key=True)
+    PandaID_fk = db.Column('PandaID_fk', db.Integer) ## FK relationship
+    BodyLength = db.Column('BodyLength', db.Integer)
+    BodyHeight = db.Column('BodyHeight', db.Integer)
+    BodyWeight = db.Column('BodyWeight', db.Integer)
+    BioDate = db.Column('BioDate', db.DateTime) ## MM/DD/YYYY
+    BioTime = db.Column('BioTime', db.DateTime) ## HH:MM - 24 hour ideally
+    StaffID_fk = db.Column('StaffID_fk', db.Integer)
+
+    def __init__(self, BioID, pandaid, length, height, weight, biodate, biotime, staffid): ## Is this correct?
+        self.BioID = BioID
+        self.PandaID_fk = pandaid
+        self.BodyLength = length
+        self.BodyHeight = height
+        self.BodyWeight = weight
+        self.BioDate = biodate
+        self.BioTime = biotime
+        self.StaffID_fk = staffid
+
+##  Define request of form data for 'bio_entry()' function ##
 def bio_entry():
     if request.method == 'POST':
-        PandaID = request.form['PandaID']
+        pandaid = request.form['PandaID']
         weight = request.form['Weight']
         height = request.form['Height']
         length = request.form['Length']
-        BioDate = request.form['BioDate']
-        BioTime = request.form['BioTime']
+        biodate = request.form['BioDate']
+        biotime = request.form['BioTime']
+        staffid = request.form['StaffID']
         error = None
 
         if not title:
@@ -42,11 +82,15 @@ def bio_entry():
         else:
             db = get_db()
             db.execute(
-                'INSERT INTO bio_tbl (PandaID, weight, height, length, BioDate, BioTime, StaffID)'
-                ' VALUES (?, ?, ?, ?, ?, ?)',
-                (PandaID, weight, height, length,BioDate, BioTime, g.user['id'])
+                'INSERT INTO bio_tbl (PandaID_fk, BodyWeight, BodyHeight, BodyLength, BioDate, BioTime, StaffID_fk)'
+                'VALUES (?, ?, ?, ?, ?, ?, ?)',
+                (pandaid, weight, height, length,biodate, biotime, staffid)
             )
             db.commit()
             return redirect(url_for('pandapp.index'))
 
-    return render_template('pandapp/bio_entry.html')
+    return render_template('pandapp/Template/Bio_Entry.html')
+
+if __name__ == '__main__':
+    db.create_all()
+    pandapp.run(debug=True)
