@@ -1,0 +1,107 @@
+<html>
+<link rel="stylesheet" href="theme.css" />
+<script>
+$(".date-pick").datepicker('setDate', new Date());
+</script>
+
+<body class="background-color">
+<div class="container-fluid pb-5">
+    <!-- Brand color  -->
+    <div class="container-fluid example-container mt-5" data-category="brand-color">
+        <div class="mt-3 mb-5">
+            <div class="p-2 mb-2 bg-secondary text-white"><h3>Mating</h3></div>
+                        <div class="p-2 mb-2 bg-success text-white">Update Mating Entry</div>
+        </div>
+    <!-- Grid  -->
+    <div class="container-fluid example-container" data-category="grid">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="mt-3 mb-5">
+                <div class="container-fluid example-container" data-category="forms">
+                  <label for="MatingID" class="col-xs-3 col-form-label mr-2"><i>MatingID:</i></label>
+                </div>
+                <br>
+                <div>
+                    <div class="dropdown">
+                      <label for="MateDate" class="col-xs-3 col-form-label mr-2">Mate Date</label>
+                      <input type="date">
+                    </div>
+                    <div>
+                      <label for="MateTime" class="col-xs-3 col-form-label mr-2">Mate Time</label>
+                      <input type="time">
+                    </div>
+                    <div class="mt-3 mb-5">
+                        <div class="container">
+                            <form action="javascript:void(0);">
+                              <div class="form-group row">
+                              </div>
+                                <div class="form-group row">
+                                    <div class="col-xs-6">
+                                    <label for="SirPanda" class="col-xs-3 col-form-label mr-2">Sire Panda</label>
+                                    <input type="dropdown" class="form-control" id="SirPanda" name="SirPanda">
+                                    </div>
+                                    <br>
+                                    <div class="col-xs-6">
+                                    <label for="DamPanda" class="col-xs-3 col-form-label mr-2">Dam Panda</label>
+                                    <input type="dropdown" class="form-control" id="DamPanda" name="DamPanda">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="InsemType" class="col-xs-3 col-form-label mr-2">Insemination Type</label>
+                                    <div class="col-xs-9">
+                                        <input type="number" class="form-control" label="cm" id="InsemType" name="InsemType">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="InsemTime" class="col-xs-3 col-form-label mr-2">Intromission Time</label>
+                                    <div class="col-xs-9">
+                                        <input type="time" class="form-control" id="InsemTime" name="InsemTime">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="People" class="col-xs-3 col-form-label mr-2">Number of People</label>
+                                    <div class="col-xs-9">
+                                        <input type="number" class="form-control" label="Peeople" id="People" name="People">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-xs-9">
+                                      <div class="form-check form-check-inline">
+                                          <label class="form-check-label">
+                                              <input class="form-check-input" type="checkbox" id="Video" value="Video"> Video
+                                          </label>
+                                      </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+          </div>
+        </div>
+          <div class="col-sm-4">
+            <div class="mt-3 mb-5">
+                <button type="button" class="btn btn-outline-success">Update Record</button>
+                <br>
+                <br>
+                <button type="button" class="btn btn-outline-danger">Delete Record</button>
+                <br>
+                <br>
+                <button type="button" class="btn btn-outline-secondary">Exit to Menu</button>
+            </div>            <div class="form-group row">
+                <label for="MateDate" class="datePicker" default="CurrentDate()">Mating Date</label>
+                <div class="col-xs-9">
+                    <input type="date" class="form-control" id="datePicker" name="datePicker">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="MateTime" class="col-xs-3 col-form-label mr-2">Mating Time</label>
+                <div class="col-xs-9">
+                    <input type="time" class="form-control" label="hh:mm" id="MateTime" name="MateTime">
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+</div>
