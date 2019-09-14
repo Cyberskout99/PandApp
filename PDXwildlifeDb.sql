@@ -1,4 +1,4 @@
-﻿DROP TABLE Inf_tbl CASCADE;
+DROP TABLE Inf_tbl CASCADE;
 CREATE TABLE  Inf_tbl (
 	InfID	serial PRIMARY KEY,
 	LitterID_fk	int,
@@ -245,8 +245,10 @@ CREATE TABLE  Bio_tbl (
 	Length	int,
 	Height	int,
 	Weight	numeric,
-	BirthDate date
+	BirthDate date,
+	StaffID_fk int
 	--FOREIGN KEY(PandaID_fk) REFERENCES Panda_tbl(PandaID)
+	--FOREIGN KEY(StaffID_fk) REFERENCES Staff_tbl(StaffID)
 );
 COPY Bio_tbl(BioID,PandaID_fk,Length, Height, Weight, BirthDate)
 FROM './X/Bio_tbl.csv' DELIMITER ',' CSV HEADER;
