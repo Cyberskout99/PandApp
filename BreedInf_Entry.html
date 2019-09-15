@@ -1,0 +1,123 @@
+<html>
+<link rel="stylesheet" href="theme.css" />
+<script>
+$(".date-pick").datepicker('setDate', new Date());
+</script>
+
+<body class="background-color">
+<div class="container-fluid pb-5">
+    <!-- Brand color  -->
+    <div class="container-fluid example-container mt-5" data-category="brand-color">
+        <div class="mt-3 mb-5">
+            <div class="p-2 mb-2 bg-secondary text-white"><h3>Reproduction</h3></div>
+                        <div class="p-2 mb-2 bg-primary text-white">Add New Entry</div>
+        </div>
+    <!-- Grid  -->
+    <div class="container-fluid example-container" data-category="grid">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="mt-3 mb-5">
+                <div class="container-fluid example-container" data-category="forms">
+                    <h3>Birthing Info</h3>
+                    <div class="dropdown">
+                      <label for=""><i>Mating ID:</i></label>
+                      <br>
+                      <label for=""><i>Maternal Panda ID:</i></label>
+                      <br>
+                      <label for="BirthingDate" class="col-xs-3 col-form-label mr-2">Birthing Date</label>
+                      <input type="date">
+                      <br>
+                      <label for="LitterSize" class="col-xs-3 col-form-label mr-2">Litter Size</label>
+                      <input type="number" value="3"> <!-- This should be reactive -->
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="mt-3 mb-5">
+                <button type="button" class="btn btn-outline-primary">Add Entry</button>
+                <br>
+                <br>
+                <button type="button" class="btn btn-outline-secondary">Exit to Menu</button>
+              </div>
+          </div>
+        </div>
+        <div class="mt-3 mb-5">
+            <h3>Table with border</h3>
+            <table class="table table-bordered"> <!-- This should be reactively rendered -->
+                <thead>
+                <tr>
+                    <th>Birth Order</th> <!-- Table Header -->
+                    <th>Infant Name</th>
+                    <th>Sex</th>
+                    <th>PandaID</th>
+                </tr>
+                </thead>
+                <tfoot>
+                </tfoot>
+                <tbody>
+                <tr>
+                    <td>1</td>  <!-- Infant 1 Info -->
+                    <td><input type="text" value="Panda A"></td>
+                    <td>
+                      <div class="container">
+                      <fieldset class="form-group">
+                      <div class="row">
+                        <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="legendRadio1A" id="legendRadio1A" value="1"> Male
+                        </label>
+                        </div>
+                        <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="legendRadio2A" id="legendRadio2A" value="2" checked=""> Female
+                        </label>
+                    </div>
+                  </div>
+                </div></fieldset></div></td>
+                    <td>897</td> <!-- This should be auto-assigned to/from Panda_tbl -->
+                </tr>
+                <tr>
+                    <td>2</td>  <!-- Infant 2 Info -->
+                    <td><input type="text" value="Panda B"></td>
+                    <td><div class="container"><fieldset class="form-group"><div class="row">
+                        <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="legendRadio1B" id="legendRadio1B" value="1"> Male
+                        </label>
+                        </div>
+                        <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="legendRadio2B" id="legendRadio2B" value="2" checked=""> Female
+                        </label>
+                    </div>
+                  </div>
+                </div></fieldset></div></td>
+                    <td>898</td> <!-- This should be auto-assigned to/from Panda_tbl -->
+                </tr>
+                <tr>
+                    <td>3</td> <!-- Infant 3 Info -->
+                    <td><input type="text" value="Panda C"></td>
+                    <td><div class="container">
+                      <fieldset class="form-group"><div class="row">
+                        <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="legendRadio3C" id="legendRadio1C" value="1"> Male
+                        </label>
+                        </div>
+                        <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="legendRadio3C" id="legendRadio2C" value="2" checked=""> Female
+                        </label>
+                        </div></div>
+                      </fieldset>
+                      </div></td>
+                    <td>899</td>  <!-- This should be auto-assigned to/from Panda_tbl -->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>

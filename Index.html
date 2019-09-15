@@ -1,0 +1,73 @@
+<html>
+<link rel="stylesheet" href="theme.css" />
+<body class="background-color">
+<div class="container-fluid pb-5">
+    <!-- Brand color  -->
+    <div class="container-fluid example-container mt-5" data-category="brand-color">
+        <div class="mt-3 mb-5">
+            <div class="p-2 mb-2 bg-secondary text-white"><h3>Pandapp</h3></div>
+                        <div class="p-2 mb-2 bg-primary text-white">Landing Page</div>
+        </div>
+
+    <!-- Grid  -->
+    <div class="container-fluid example-container" data-category="grid">
+        <div class="row">
+          <div id="actions" class="col-sm-6">
+            <div class="container-fluid example-container">
+                <h1>Actions</h1>
+                <button type="button" class="btn btn-outline-primary">Biometrics</button>
+                <br>
+                <button type="button" class="btn btn-outline-primary">Behavior</button>
+                <br>
+                <button type="button" class="btn btn-outline-primary">Mating</button>
+                <br>
+                <button type="button" class="btn btn-outline-primary">Labs</button>
+                <br>
+                <button type="button" class="btn btn-outline-primary">Cage Change</button>
+            </div>
+        </div>
+          <div id="reporting" class="col-sm-6">
+            <div class="container-fluid example-container" data-category="dropdown">
+                <h1>Reporting</h1>
+                    <div class="row">
+                    <div style="position: relative" class="mt-3 mb-5 col-4">
+                      <h3>Views</h3>
+                      <div class="dropdown">
+                          <button class="btn btn-primary dropdown-toggle"
+                           type="button" data-toggle="dropdown">
+                              Views <span class="caret"></span> <!-- Views are for "snapshots" of data (cage assignment, last 5 labs, etc.)-->
+                          </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">View1</a></li>
+                              <li><a class="dropdown-item" href="#">View2</a></li>
+                              <li><a class="dropdown-item" href="#">View3</a></li>
+                            </ul>
+                        </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h3>Reports</h3>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle"
+                             type="button" data-toggle="dropdown">
+                                Reports<span class="caret"></span> <!-- Reports are downloadable CSV files (SQL reports of database-->
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="report1">Report1</a>
+                                <a class="dropdown-item" href="report2">Report2</a>
+                                <a class="dropdown-item" href="report3">Report3</a>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+          </div>
+        </div>
+    </div>
+</div>
+</div>
+            <div class="p-2 mb-2 bg-secondary text-white">
+              <button class="btn bg-white">Change User</button>
+              <button class="btn bg-white">Update Password</button>
+              <button class="btn bg-white">Log Out</button>
+            </div>
+</body>

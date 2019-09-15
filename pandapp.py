@@ -1,20 +1,14 @@
-import psycopg2
+# import psycopg2
 from flask import request, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
+from models import Bio
+from config import Config
 
-app = Flask(__name__) # by default, takes name of root directory
+app = Flask(__name__)  # by default, takes name of root directory
+app.config.from_object(Config)
 
-app.config['DEBUG']= True
-
-# dictionary of arguments to pass through for config settings
-app.config.update(
-    SECRET_KEY='Battlestar*84',
-    SQLALCHEMY_DATABASE_URI='postgresql://postgres:Battlestar*84@localhost/PandaApp_Db',
-    SQLALCHEMY_TRACK_MODIFICATIONS=False)
-
-# create instance of SQLAlchemy class
-db = SQLAlchemy(app)
+from app import routes
 
 dummyStaff = {'StaffID': 1, 'StaffFirst': 'Jim', 'StaffLast': 'Jones', 'Username': 'UserID123', 'Password': 'TopSecret'}
 
@@ -31,11 +25,13 @@ def bio_entry():
         db.BioDate = request.form['BioDate']
         db.BioTime = request.form['BioTime']
         db.StaffID = request.form['StaffID']
+        db.BioID = request.form['BioID']
 
-    return render_template('Bio_Entry.html')
-
+    return render_template('Bio_Entry.html') ## add validation for successful form submission prior to render template
 
 # from pandapp import routes # doesn't seem to be working ? #
+# Where does the "Class" come into play here?   Re-read tutorial.  Study (1) Classes, (2) Decorators
+Bio.BioID = 10
 
 if __name__ == '__main__':
     db.create_all()
