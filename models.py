@@ -2,7 +2,7 @@ import psycopg2
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 
-db = SQLAlchemy(__name__) ## create instance of SQLAlchemy class
+db = SQLAlchemy() ## create instance of SQLAlchemy class
 ##  Basic Panda Info (PandaID is a dependency for biometrics entry) ##
 class Panda(db.Model):
     __tablename__ = 'Panda_tbl'

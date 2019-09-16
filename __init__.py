@@ -8,8 +8,6 @@ from config import Config
 app = Flask(__name__)  # by default, takes name of root directory
 app.config.from_object(Config)
 
-from app import routes
-
 dummyStaff = {'StaffID': 1, 'StaffFirst': 'Jim', 'StaffLast': 'Jones', 'Username': 'UserID123', 'Password': 'TopSecret'}
 
 #  Apply decorator to 'bio_entry()' function #
