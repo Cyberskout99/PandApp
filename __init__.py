@@ -10,7 +10,7 @@ app.config.from_object(Config)
 def index():
     return render_template('index.html')
 
-## Entry Routes - review delegation to Routes module ##
+### Entry Routes - review delegation to Routes module ##
 
 @app.route('/bio_entry', methods=('GET', 'POST'))  ## Biometrics
 def bio_entry():
