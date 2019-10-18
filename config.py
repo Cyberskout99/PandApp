@@ -1,7 +1,15 @@
+from flask import Flask
 import os
-basedir = os.path.abspath(os.path.dirname(__file__))
+
+app = Flask(__name__)  # by default, assumes name of root directory
 
 class Config(object):
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'sqlite:///' + os.path.join(basedir, 'app.db')
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+	SECRET_KEY = os.environ.get('cupcake'),
+    	SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:cupcake@localhost/panda_db',
+    	SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+def __get_environment():  ## sets default environment to DEV
+    environment = os.getenv('FLASK_ENV')
+    if environment is None:
+        environment = 'dev'
+    return environment

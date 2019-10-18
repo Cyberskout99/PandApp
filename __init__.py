@@ -1,19 +1,18 @@
-# import psycopg2
-from flask import request, render_template
+from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask
 from models import Bio
-from config import Config
+from config import app,Config
 
-app = Flask(__name__)  # by default, takes name of root directory
+
 app.config.from_object(Config)
 
-dummyStaff = {'StaffID': 1, 'StaffFirst': 'Jim', 'StaffLast': 'Jones', 'Username': 'UserID123', 'Password': 'TopSecret'}
+@app.route('/') ## Landing Page
+def index():
+    return render_template('index.html')
 
-#  Apply decorator to 'bio_entry()' function #
+## Entry Routes - review delegation to Routes module ##
 
-
-@app.route('/bio_entry', methods=('GET', 'POST'))
+@app.route('/bio_entry', methods=('GET', 'POST'))  ## Biometrics
 def bio_entry():
     if request.method == 'POST':
         db.PandaID = request.form['PandaID']
@@ -25,11 +24,26 @@ def bio_entry():
         db.StaffID = request.form['StaffID']
         db.BioID = request.form['BioID']
 
-    return render_template('Bio_Entry.html') ## add validation for successful form submission prior to render template
+    return render_template('Bio_Entry.html') ## add form validation
 
-# from pandapp import routes # doesn't seem to be working ? #
-# Where does the "Class" come into play here?   Re-read tutorial.  Study (1) Classes, (2) Decorators
-Bio.BioID = 10
+@app.route('/lab_entry')
+def lab_entry():
+    return render_template('Labs_Entry.html') ## add form validation
+
+@app.route('/behav_entry')
+def behav_entry():
+    return render_template('Behav_Entry.html') ## add form validatiom 
+
+@app.route('/breed_entry')
+def breed_entry():
+    return render_template('BreedInf_Entry.html')  ## add form validation
+
+@app.route('/mating_entry')
+def mating_entry():
+    return render_template('Mating_Entry.html') ## add form validnation
+
+## Update Routes ##
+
 
 if __name__ == '__main__':
     db.create_all()
