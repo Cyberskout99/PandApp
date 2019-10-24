@@ -1,11 +1,13 @@
-from config import app,Config
+from flask import render_template, request
+from .config import app
+from .models import db
 
 
-app.config.from_object(Config)
+app.config.from_pyfile('config.py')
 
 @app.route('/') ## Landing Page
 def index():
-    return render_template('index.html')
+    return render_template('main/index.html')
 
 ### Entry Routes - review delegation to Routes module ##
 
@@ -20,23 +22,20 @@ def bio_entry():
         db.BioTime = request.form['BioTime']
         db.StaffID = request.form['StaffID']
         db.BioID = request.form['BioID']
+    return render_template('entry/bio_entry.html') ## add form validation
 
-    return render_template('Bio_Entry.html') ## add form validation
-
-@app.route('/lab_entry')
+@app.route('/lab_entry', methods=('GET', 'POST'))
 def lab_entry():
-    return render_template('Labs_Entry.html') ## add form validation
+    return render_template('entry/lab_entry.html') ## add form validation
 
 @app.route('/behav_entry')
 def behav_entry():
-    return render_template('Behav_Entry.html') ## add form validatiom 
+    return render_template('entry/behav_entry.html') ## add form validatiom 
 
 @app.route('/breed_entry')
 def breed_entry():
-    return render_template('BreedInf_Entry.html')  ## add form validation
+    return render_template('entry/breed_entry.html')  ## add form validation
 
 @app.route('/mating_entry')
 def mating_entry():
-    return render_template('Mating_Entry.html') ## add form validnation
-
-
+    return render_template('entry/mating_entry.html') ## add form validnation
