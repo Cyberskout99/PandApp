@@ -1,0 +1,33 @@
+/home/user/Projects/PandApp
+|--- pandapp/
+|	|-- __init__.py
+|	|-- config.py
+|	|-- models.py
+|	|-- routes.py
+|	|-- templates
+|	|	|
+|	|	|-- main/
+|	|	|	|- index.html
+|	|	|	|- change_password.html
+|	|	|	|- submit_changes_to_db.html
+|	|	|	|- cage_change.html
+|	|	|	
+|	|	|-- entry/
+|	|	|	|- bio_entry.html
+|	|	|	|- labs_entry.html
+|	|	|	|- behav_entry.html
+|	|	|	|- mating_entry.html
+|	|	|	|- breed_entry.html
+|	|	|		
+|	|	|-- update/
+|	|		|- bio_update.html
+|	|		|- labs_update.html
+|	|		|- behav_update.html
+|	|		|- mating_update.html
+|	|		
+|	|-- static/
+|		|-- theme.css
+|
+|
+|-- venv/
+		

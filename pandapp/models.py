@@ -1,8 +1,10 @@
 import psycopg2
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask
+# from pandapp import app
 
 db = SQLAlchemy() ## create instance of SQLAlchemy class
+## Added in to allow for "push" a context ##
+#db.init_app(app) 
 ###  Basic Panda Info (PandaID is a dependency for biometrics entry) ##
 class Panda(db.Model):
     __tablename__ = 'Panda_tbl'
@@ -14,7 +16,7 @@ class Panda(db.Model):
     Provenance = db.Column('Provenance', db.Unicode)
     CaptureDate = db.Column('Capture_Date', db.Date)
     BirthLoc = db.Column('Birth_Location', db.Unicode)
-    biometrics = db.relationship('Bio', backref='panda', lazy=True)
+#   biometrics = db.relationship('Bio', backref='panda', lazy=True)
 
 ##  Data Collection Staff Info (StaffID is a dependency for biometrics entry) ##
 class Staff(db.Model):
@@ -24,7 +26,7 @@ class Staff(db.Model):
     StaffLast = db.Column('StaffLast', db.Unicode)
     Username = db.Column('Username', db.Unicode)
     Password = db.Column('Password', db.Unicode)
-    biometrics = db.relationship('Bio', backref='staff', lazy=True)
+ ##   biometrics = db.relationship('Bio', backref='staff', lazy=True)
 
 ##  Define data for Flask/SQLAlchemy 'Bio' data object (class) ##
 class Bio(db.Model):
@@ -34,8 +36,8 @@ class Bio(db.Model):
     BodyLength = db.Column('BodyLength', db.Integer)
     BodyHeight = db.Column('BodyHeight', db.Integer)
     BodyWeight = db.Column('BodyWeight', db.Integer)
-    BioDate = db.Column('BioDate', db.DateTime) ## MM/DD/YYYY
-    BioTime = db.Column('BioTime', db.DateTime) ## HH:MM - 24 hour ideally
+    BioDate = db.Column('BioDate', db.Integer) ## MM/DD/YYYY
+    BioTime = db.Column('BioTime', db.Integer) ## HH:MM - 24 hour ideally
     StaffID_fk = db.Column('StaffID_fk', db.Integer)
 
     def __init__(self, BioID, pandaid, length, height, weight, biodate, biotime, staffid): ## Is this correct?
@@ -47,3 +49,6 @@ class Bio(db.Model):
         self.BioDate = biodate
         self.BioTime = biotime
         self.StaffID_fk = staffid
+
+if __name__ == '__main__':
+    db.create_all()

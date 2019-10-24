@@ -1,7 +1,4 @@
-from flask import Flask
 import os
-
-app = Flask(__name__)  ## by default, assumes name of root directory
 
 class Config(object):
     SECRET_KEY = os.environ.get('cupcake'),
@@ -13,3 +10,4 @@ def __get_environment():  ## sets default environment to DEV
     if environment is None:
         environment = 'dev'
     return environment
+    
